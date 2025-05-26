@@ -5,10 +5,10 @@ import (
 )
 
 type Config struct {
-	Timeout  time.Duration
-	Host     string `mapstructure:"host"`
-	Port     int    `mapstructure:"port"`
-	User     string `mapstructure:"user"`
-	Database string `mapstructure:"database"`
-	Password string `mapstructure:"password"`
+	Timeout  time.Duration `mapstructure:"timeout"`
+	Host     string        `mapstructure:"host"`
+	Port     int           `mapstructure:"port"`
+	User     string        `mapstructure:"user"`
+	Database string        `mapstructure:"database"`
+	Password string        `mapstructure:"password"`
 }

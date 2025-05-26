@@ -35,7 +35,7 @@ func New(conf Config, logger logger.Logger) (*Client, error) {
 		}
 
 		// Context with timeout for connecting to MongoDB
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), conf.Timeout)
 		defer cancel()
 
 		// Connect to MongoDB
