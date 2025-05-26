@@ -1,4 +1,4 @@
-package mongo
+package mongodb
 
 import (
 	"context"
@@ -28,20 +28,15 @@ func New(conf Config, logger logger.Logger) (*Client, error) {
 			conf.Port,
 		)
 		// Created a new client and connect to the server
-		client, err := mongo.NewClient(options.Client().ApplyURI(uri))
-		if err != nil {
-			logger.Panic(fmt.Sprintf("Failed to create MongoDB client: %v", err))
-			panic(err)
-		}
-
 		// Context with timeout for connecting to MongoDB
 		ctx, cancel := context.WithTimeout(context.Background(), conf.Timeout)
 		defer cancel()
 
 		// Connect to MongoDB
-		err = client.Connect(ctx)
+		client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 		if err != nil {
 			logger.Panic(fmt.Sprintf("Failed to connect to MongoDB: %v", err))
+			panic(err)
 		}
 
 		// Ping the database to verify the connection

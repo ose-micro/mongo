@@ -14,7 +14,7 @@ func main() {
 		Level: "info",
 	})
 
-	mdb, err := mongo.New(mongo.Config{
+	mdb, err := mongodb.New(mongodb.Config{
 		Host:     "localhost",
 		Port:     27019,
 		User:     "fundraising",

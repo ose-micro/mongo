@@ -30,18 +30,18 @@ func (u UserCollection) Insert(ctx context.Context, user User) error {
 }
 
 func (u UserCollection) Find(ctx context.Context) error {
-	filter := mongo.BuildFilter([]dto.Filter{
+	filter := mongodb.BuildFilter([]dto.Filter{
 		{Field: "name", Operator: dto.LIKE, Value: "Kargbo"},
 	})
 
-	sort := mongo.BuildSort(
-		mongo.Sort{Field: "name", Direction: 1},
+	sort := mongodb.BuildSort(
+		mongodb.Sort{Field: "name", Direction: 1},
 	)
 
 	limitValue := int64(2)
-	limit := mongo.WithLimit(limitValue)
+	limit := mongodb.WithLimit(limitValue)
 	skipValue := int64(0)
-	skip := mongo.WithSkip(skipValue)
+	skip := mongodb.WithSkip(skipValue)
 
 	findOpts := options.Find()
 	sort(findOpts)
